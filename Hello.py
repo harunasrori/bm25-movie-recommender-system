@@ -128,8 +128,8 @@ def get_recommendations(query_movie_title):
 
 # Streamlit App
 st.set_page_config(
-        page_title="Hello",
-        page_icon="👋",
+        page_title="Movie Recommender System",
+        page_icon="📽",
     )
 
 st.write("# Welcome to BM25 Movie Recommender System! 👋")
