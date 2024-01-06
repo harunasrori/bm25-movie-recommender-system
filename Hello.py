@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import math
+import numpy as np
 from six import iteritems
 from six.moves import xrange
 
@@ -45,7 +45,7 @@ class BM25(object):
                 self.df[word] += 1
 
         for word, freq in iteritems(self.df):
-            self.idf[word] = math.log((self.corpus_size - freq + 0.5) / (freq + 0.5))
+            self.idf[word] = np.log((self.corpus_size - freq + 0.5) / (freq + 0.5))
 
     def get_score(self, query_document, index, k1=2.5, b=0.85, e=0.2):
         score = 0
@@ -81,9 +81,6 @@ df['genres'] = df['genres'].fillna('').apply(lambda x: [] if len(x) == 0 else x)
 
 
 df.info()
-print((df.head()))
-print((df.iloc[0].overview))
-print((df.iloc[0].genres))
 # Your BM25 initialization
 bm25 = BM25(df.overview)
 
